@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  php:
+    build: php8
+    volumes:
+      - ../:/var/www/html/degen-scanner/
+    ports:
+      - 80:80
+  mysql-degen-scanner:
+    image: mysql:5.7.32
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - mysql-data:/var/lib/mysql
+  phpmyadmin-degen-scanner:
+    image: phpmyadmin:5.0.4
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: mysql-degen-scanner
+volumes:
+  mysql-data:

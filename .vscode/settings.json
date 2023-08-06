@@ -1,0 +1,133 @@
+{
+	"files.exclude": {
+		"**/.git": true,
+		// ".vscode/": true,
+		// "vendor/": true,
+		// ".gitignore": true,
+		"CHANGELOG.md": true,
+		// "composer.json": true,
+		"composer.lock": true,
+		"CREDITS": true,
+		"LICENSE.md": true,
+		// "README.md": true,
+	},
+	"search.exclude": {
+		"**/.git": true,
+		"**/.vscode/": true,
+		"**/vendor/": true,
+	},
+
+	"git.ignoreLimitWarning": true,
+
+	"phpcs.executablePath": "/usr/local/bin/phpcs",
+	"phpcs.standard": "./.vscode/conf/phpcs.xml",
+	"phpcs.ignorePatterns": [
+        "./vendor/*",
+		"**/runtime/",
+		"**/web/assets/"
+	],
+	// "phpcs.enable": false,
+	
+
+	"phpcbf.executablePath": "/usr/local/bin/phpcbf",
+	"phpcbf.standard": "~/project/degen-scanner/.vscode/conf/phpcs.xml",
+	"phpcbf.debug": true,
+	// "phpcbf.enable": false,
+
+
+	"phpmd.command": "/usr/local/bin/phpmd",
+	"phpmd.rules": "./.vscode/conf/phpmd.xml",
+	"phpmd.verbose": true,
+
+	// "explorer.compactFolders": false,
+
+	"workbench.colorCustomizations": {
+		"my-white": "#ffffff",
+		"my-yellow": "#ffc01f",
+		"my-green": "#89d185",
+		"my-red": "#f14c4c",
+		"my-blue": "#2472c8",
+		"my-orange": "#d18616",
+		"my-purple": "#b180d7",
+	},
+
+	"commands.treeViewCollapseFolders": true,
+	"commands.workspaceCommands": {
+		"Workstation": {
+			"nestedItems" : {
+				"Docker - Restart main project" : {
+					"icon": "vm",
+					"iconColor": "my-green",
+					"disableTooltip": true,
+					"sequence": [
+						{
+							"command": "workbench.action.terminal.new"
+						},
+						{
+							"command": "workbench.action.terminal.sendSequence",
+							"args": {
+								"text": "clear && cd ~/work/projects/proj-032 && /bin/bash _dev/stop.sh && /bin/bash _dev/start.sh\r"
+							}
+						},
+						{
+							"command": "workbench.action.terminal.sendSequence",
+							"args": {
+								"text": "exit\r"
+							}
+						}
+					],
+					"statusBar": {
+						"alignment": "left",
+						"backgroundColor": "error"
+					}
+				},
+				"Code - Update" : {
+					"icon": "file-code",
+					"iconColor": "my-orange",
+					"disableTooltip": true,
+					"sequence": [
+						{
+							"command": "workbench.action.terminal.new"
+						},
+						{
+							"command": "workbench.action.terminal.sendSequence",
+							"args": {
+								"text": "clear && cd ~/work/projects/proj-032 && /bin/bash _dev/scripts/composer.sh\r"
+							}
+						},
+						{
+							"command": "workbench.action.terminal.sendSequence",
+							"args": {
+								"text": "exit\r"
+							}
+						}
+					],
+					"statusBar": {
+						"alignment": "left",
+						"backgroundColor": "warning"
+					}
+				},
+				"Code - Update, Migrations and Fixtures" : {
+					"icon": "file-code",
+					"iconColor": "my-orange",
+					"disableTooltip": true,
+					"sequence": [
+						{
+							"command": "workbench.action.terminal.new"
+						},
+						{
+							"command": "workbench.action.terminal.sendSequence",
+							"args": {
+								"text": "clear && cd ~/work/projects/proj-032 && /bin/bash _dev/scripts/reset.sh\r"
+							}
+						}
+					],
+					"statusBar": {
+						"alignment": "left",
+						"backgroundColor": "error"
+					}
+				}
+			}
+		}
+	},
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<ruleset name="QavStandard">
+    <!-- https://github.com/squizlabs/PHP_CodeSniffer/wiki/Customisable-Sniff-Properties -->
+
+    <description>
+        PSR2 with changes:
+            * tabs instead of spaces (https://gist.github.com/gsherwood/9d22f634c57f990a7c64)
+			* exclude line LineLength
+
+		Commented:
+		    * bracers on end of line instead new line
+    </description>
+    
+    <!-- tabs -->
+    <arg name="tab-width" value="4"/>
+    <rule ref="PSR2">
+        <!-- tabs -->
+        <exclude name="Generic.WhiteSpace.DisallowTabIndent"/>
+
+        <!-- line length -->
+        <exclude name="Generic.Files.LineLength"/>
+
+		<!-- only one use declaration per line -->
+        <exclude name="PSR2.Namespaces.UseDeclaration"/>
+
+		<!-- don't allot to use both classes, functions... on same file -->
+        <exclude name="PSR1.Files.SideEffects"/>
+    </rule>
+    
+	<rule ref="Internal.NoCodeFound">
+		<severity>0</severity>
+	</rule>
+
+    <!-- tabs -->
+    <rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="indent" value="4"/>
+            <property name="tabIndent" value="true"/>
+        </properties>
+    </rule>
+
+	<exclude-pattern>vendor/</exclude-pattern>
+	<exclude-pattern>migrations/</exclude-pattern>
+	<exclude-pattern>_dev/</exclude-pattern>
+	<exclude-pattern>*.min.js</exclude-pattern>
+	<exclude-pattern>*.min.css</exclude-pattern>
+	<exclude-pattern>*.css</exclude-pattern>
+	<exclude-pattern>*.js</exclude-pattern>
+	<exclude-pattern>*.json</exclude-pattern>
+	<exclude-pattern>*.xlsx</exclude-pattern>
+
+	<exclude-pattern>common/models/Backup_07_05_2019/</exclude-pattern>
+</ruleset>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<ruleset name="QavStandardMD"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0
+                     http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="
+                     http://pmd.sf.net/ruleset_xml_schema.xsd">
+
+    <!-- https://phpmd.org/rules/index.html -->
+
+    <description>
+        PHPMD with changes:
+		"phpmd.rules": "cleancode,codesize,controversial,design,naming,unusedcode"
+    </description>
+
+    <rule ref="rulesets/cleancode.xml" >
+        <exclude name="ElseExpression" />
+        <exclude name="StaticAccess" />
+        <exclude name="BooleanArgumentFlag" />
+    </rule>
+
+	<!-- <rule ref="rulesets/codesize.xml" /> -->
+
+	<rule ref="rulesets/controversial.xml">
+        <exclude name="CamelCaseVariableName" />
+        <exclude name="CamelCasePropertyName" />
+        <exclude name="Superglobals" />
+        <exclude name="CamelCaseParameterName" />
+    </rule>
+
+    <rule ref="rulesets/design.xml" >
+        <exclude name="ExitExpression" />
+        <exclude name="CouplingBetweenObjects" />
+    </rule>
+
+	<rule ref="rulesets/naming.xml">
+        <exclude name="ShortVariable" />
+        <exclude name="LongVariable" />
+        <exclude name="ShortMethodName" />
+    </rule>
+	<rule ref="rulesets/naming.xml/ShortMethodName">
+        <properties>
+            <property name="exceptions" value="t,db,id" />
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/unusedcode.xml" />
+
+	<exclude-pattern>vendor/</exclude-pattern>
+	<exclude-pattern>migrations/</exclude-pattern>
+	<exclude-pattern>_dev/</exclude-pattern>
+</ruleset>
